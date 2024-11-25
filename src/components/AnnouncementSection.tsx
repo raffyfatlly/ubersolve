@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Bot, ArrowRight } from 'lucide-react';
 
-export default function AnnouncementSection({ onShowContactForm }) {
+export default function AnnouncementSection() {
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Background Elements */}
@@ -25,7 +25,7 @@ export default function AnnouncementSection({ onShowContactForm }) {
             </span>
           </h2>
           
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
             Build your own AI chatbot in minutes, no coding required. Drag, drop, and deploy your custom AI assistant instantly.
           </p>
 
@@ -61,23 +61,17 @@ export default function AnnouncementSection({ onShowContactForm }) {
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-row gap-4 justify-center">
-            <Link 
-              to="/studio"
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-dark-lighter hover:bg-dark-card px-6 py-3 rounded-lg border border-gray-800 hover:border-green-500/30 transition-all"
-            >
-              <Bot size={20} />
-              <span>Preview AI Studio</span>
-            </Link>
-            <button
-              onClick={onShowContactForm}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-all"
-            >
-              <Sparkles size={20} />
-              <span>Join Waiting List</span>
-            </button>
-          </div>
+          {/* Preview Link */}
+          <Link 
+            to="/studio"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white group relative"
+          >
+            <span className="relative">
+              Preview AI Studio
+              <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-green-500/0 via-green-500/50 to-green-500/0 group-hover:via-green-500 transition-all"></span>
+            </span>
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>
