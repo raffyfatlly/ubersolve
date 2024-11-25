@@ -7,7 +7,7 @@ interface TypewriterTextProps {
   isVisible?: boolean;
 }
 
-export default function TypewriterText({ text, delay = 50, onComplete, isVisible = true }: TypewriterTextProps) {
+export default function TypewriterText({ text, delay = 30, onComplete, isVisible = true }: TypewriterTextProps) {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -18,7 +18,8 @@ export default function TypewriterText({ text, delay = 50, onComplete, isVisible
     if (typeof text === 'string') {
       if (currentIndex < text.length) {
         const timeout = setTimeout(() => {
-          setDisplayedText(prev => prev + text[currentIndex]);
+          const char = text[currentIndex];
+          setDisplayedText(prev => prev + char);
           setCurrentIndex(prev => prev + 1);
         }, delay);
         return () => clearTimeout(timeout);
@@ -43,5 +44,5 @@ export default function TypewriterText({ text, delay = 50, onComplete, isVisible
     return <>{text}</>;
   }
 
-  return <span>{displayedText}</span>;
+  return <span className="transition-all duration-75">{displayedText}</span>;
 }
